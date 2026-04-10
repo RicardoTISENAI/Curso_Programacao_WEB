@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Tábua da Salvação</title>
+
+    <link rel="stylesheet" href="../Style/style.css">
+
+</head>
+
+<body>
+
+    <main class="game-container">
+
+        <header class="header-box">
+
+            <h1>🔥 A TÁBUA DA SALVAÇÃO 🔥</h1>
+
+            <p>Objetivo: Isole exatamente 4 Litros no balde maior antes que o fogo queime a corda!</p>
+
+            <div id="timerDisplay" class="timer">Tempo: 60s</div>
+
+        </header>
+
+        <section class="arena">
+
+            <div class="balde-wrapper">
+
+                <div class="balde" id="balde5">
+
+                    <div class="agua" id="agua5" style="height: 0%;"></div>
+
+                </div>
+
+                <div class="label">
+
+                    Balde 5L (<span id="textoB5">0</span>L)
+
+                </div>
+
+            </div>
+
+            <div class="balde-wrapper">
+
+                <div class="balde balde-pequeno" id="balde3">
+
+                    <div class="agua" id="agua3" style="height: 0%;"></div>
+
+                </div>
+
+                <div class="label">
+
+                    Balde 3L (<span id="textoB3">0</span>L)
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="painel-controlo">
+
+            <button id="btnEncher5" class="btn">1 - Encher 5L</button>
+
+            <button id="btnEncher3" class="btn">2 - Encher 3L</button>
+
+            <button id="btnEsvaziar5" class="btn btn-perigo">3 - Esvaziar 5L</button>
+
+            <button id="btnEsvaziar3" class="btn btn-perigo">4 - Esvaziar 3L</button>
+
+            <button id="btnTransf5_3" class="btn btn-acao">5 - Transf. 5L ➔ 3L</button>
+
+            <button id="btnTransf3_5" class="btn btn-acao">6 - Transf. 3L ➔ 5L</button>
+
+        </section>
+
+        <div id="telaFim" class="modal" style="display: none;">
+
+            <h2 id="tituloFim">Vitória!</h2>
+
+            <p id="textoFim">Você salvou o seu amigo.</p>
+
+            <button id="btnReiniciar" class="btn">Jogar Novamente</button>
+
+        </div>
+
+    </main>
+
+    <script src="../JavaScript/game.js"></script>
+
+</body>
+
+</html>

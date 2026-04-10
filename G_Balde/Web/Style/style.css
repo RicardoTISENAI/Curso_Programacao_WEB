@@ -1,0 +1,124 @@
+/* ==========================================
+   CONFIGURAÇÕES GERAIS DA PÁGINA
+   ========================================== */
+body {
+    background-color: #1a0f0f; /* Cor de fundo escura (combina com o tema de fogo) */
+    color: white;              /* Cor da letra padrão */
+    font-family: 'Arial', sans-serif;
+    
+    /* O FLEXBOX é a ferramenta moderna para centralizar tudo na tela! */
+    display: flex;
+    justify-content: center; /* Centraliza no eixo Horizontal */
+    align-items: center;     /* Centraliza no eixo Vertical */
+    
+    min-height: 100vh; /* Faz o corpo ocupar 100% da altura da tela (Viewport Height) */
+    margin: 0;         /* Tira as margens brancas padrão do navegador */
+}
+
+/* A caixa principal do jogo */
+.game-container {
+    background: #2a1b1b;
+    border: 2px solid #ff4500;
+    border-radius: 10px; /* Arredonda as pontas da caixa */
+    padding: 20px;       /* Espaço interno para não colar nas bordas */
+    width: 90%;
+    max-width: 600px;    /* Não deixa o jogo ficar esticado em telas de PC gigantes */
+    text-align: center;
+}
+
+.timer {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffaa00; /* Cor laranja amarelado */
+    margin: 15px 0;
+}
+
+/* ==========================================
+   A ARENA (ÁREA DOS BALDES)
+   ========================================== */
+.arena {
+    display: flex;
+    justify-content: space-around; /* Espalha os baldes com espaços iguais entre eles */
+    align-items: flex-end;         /* Alinha os baldes "pelo chão" (em baixo) */
+    margin: 30px 0;
+    height: 250px;
+    border-bottom: 4px solid #555; /* Cria a linha que representa a Tábua */
+}
+
+/* O contorno do Balde */
+.balde {
+    width: 100px;
+    height: 200px; 
+    border: 4px solid #aaa; /* Borda cinza */
+    border-top: none;       /* Remove a borda de cima, pois o balde é aberto! */
+    border-radius: 0 0 10px 10px; /* Arredonda só o fundo do balde */
+    
+    /* POSITION RELATIVE: Avisa a água que ela não pode sair daqui de dentro! */
+    position: relative; 
+    background: rgba(255,255,255,0.05); /* Um fundo levemente transparente */
+    overflow: hidden; /* Corta qualquer coisa que tente sair do balde */
+}
+
+/* Balde menor (Apenas muda a altura, o resto herda de .balde) */
+.balde-pequeno {
+    height: 120px; 
+}
+
+/* ==========================================
+   O TRUQUE DA ÁGUA VISUAL
+   ========================================== */
+.agua {
+    /* POSITION ABSOLUTE: Permite fixar a água na parte de baixo do balde */
+    position: absolute;
+    bottom: 0; /* Gruda a água no fundo */
+    left: 0;
+    width: 100%;
+    
+    /* Um degradê azul para parecer água de verdade */
+    background: linear-gradient(180deg, #00bfff, #005f99);
+    
+    /* TRANSITION: A magia da animação! Quando o JS mudar a altura (height) da água,
+       em vez de mudar seco, o CSS faz uma animação suave de 0.4 segundos. */
+    transition: height 0.4s ease-in-out; 
+}
+
+/* ==========================================
+   PAINEL DE BOTOÕES (CONTROLO)
+   ========================================== */
+.painel-controlo {
+    /* O GRID é perfeito para fazer colunas de botões alinhados */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Cria 2 colunas do mesmo tamanho */
+    gap: 10px; /* Espaço entre os botões */
+}
+
+.btn {
+    padding: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; /* Muda o rato para a mãozinha quando passa por cima */
+    background: #007bff;
+    color: white;
+    transition: 0.2s; /* Suaviza os efeitos ao passar o rato */
+}
+
+/* Efeitos ao interagir com o botão */
+.btn:hover { filter: brightness(1.2); } /* Fica mais claro ao passar o rato */
+.btn:active { transform: scale(0.95); }  /* Afunda um pouco ao clicar */
+
+/* Cores específicas criadas com classes extras */
+.btn-perigo { background: #dc3545; } /* Vermelho para esvaziar */
+.btn-acao { background: #ffaa00; color: #000; } /* Laranja para transferir */
+
+/* ==========================================
+   TELA FINAL (Fundo Escuro sobre o jogo)
+   ========================================== */
+.modal {
+    position: fixed; /* Fica fixo cobrindo a tela toda */
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9); /* Fundo preto quase sólido */
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    z-index: 100; /* Garante que fica por cima de TUDO */
+}
