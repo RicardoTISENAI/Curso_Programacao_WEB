@@ -53,6 +53,7 @@ function atualizarVisual() {
 // ==========================================================
 function iniciarRelogio() {
     jogoAtivo = true;
+    let cooldownVento = 0; // Variável para impedir que o vento ocorra várias vezes seguidas
     
     // O setInterval é um laço (loop) que espera um tempo antes de repetir.
     // Neste caso, repete tudo o que está aqui dentro a cada 1000 milissegundos (1 segundo).
@@ -60,12 +61,17 @@ function iniciarRelogio() {
         tempo = tempo - 1; // Subtrai 1 segundo do tempo
         displayTempo.innerText = "Tempo: " + tempo + "s"; // Mostra na tela
 
+        if (cooldownVento > 0) {
+            cooldownVento--; // Reduz o tempo de espera a cada segundo
+        }
+
         // Evento Aleatório: O Vento! 
-        // Math.random() gera um número entre 0 e 1. Se for menor que 0.10, significa 10% de chance.
-        if (Math.random() < 0.10 && tempo > 5) {
+        // Só acontece se o cooldown estiver zerado e o Math.random() for menor que 0.10.
+        if (cooldownVento === 0 && Math.random() < 0.10 && tempo > 5) {
             alert("⚠️ CUIDADO! Um vento forte balançou a tábua! Perdeu 3 segundos!");
             tempo = tempo - 3;
             displayTempo.innerText = "Tempo: " + tempo + "s"; // Atualiza o relógio na tela instantaneamente
+            cooldownVento = 8; // O vento fica bloqueado e só pode voltar a soprar após 8 segundos
         }
 
         // Condição de Derrota: Se o tempo chegar a zero

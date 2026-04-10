@@ -1,53 +1,74 @@
+<!-- Declara que este ficheiro é um documento HTML5 moderno -->
 <!DOCTYPE html>
 
+<!-- Inicia o código HTML e define o idioma da página como Português do Brasil (ou de Portugal) -->
 <html lang="pt-BR">
 
+<!-- A tag <head> guarda as configurações invisíveis da página (metadados, links de estilo, título da aba) -->
 <head>
 
+    <!-- Define a codificação de caracteres para suportar acentos (á, ç, ã, etc.) -->
     <meta charset="UTF-8">
 
+    <!-- Faz com que a página seja responsiva, ou seja, que se adapte a ecrãs de telemóveis e tablets -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- O título que vai aparecer na aba (separador) do navegador de internet -->
     <title>A Tábua da Salvação</title>
 
+    <!-- Liga este ficheiro HTML ao ficheiro de CSS (que dá as cores, formas e animações ao jogo) -->
     <link rel="stylesheet" href="../Style/style.css">
 
 </head>
 
+<!-- A tag <body> é o corpo da página. Tudo o que colocarmos aqui dentro será visível para o jogador -->
 <body>
 
+    <!-- A tag <main> indica o conteúdo principal da página. Usamos uma "class" para aplicar estilos no CSS -->
     <main class="game-container">
 
+        <!-- O <header> é o cabeçalho do jogo, onde ficam o título, as instruções e o cronómetro -->
         <header class="header-box">
 
+            <!-- <h1> é o Título Principal (Heading 1), o texto maior da página -->
             <h1>🔥 A TÁBUA DA SALVAÇÃO 🔥</h1>
 
+            <!-- <p> significa Parágrafo. Usado para blocos de texto normais, como as instruções -->
             <p>Objetivo: Isole exatamente 4 Litros no balde maior antes que o fogo queime a corda!</p>
 
+            <!-- Uma <div> (divisão) para mostrar o tempo. O "id" é um identificador único que o JavaScript vai usar para atualizar os segundos -->
             <div id="timerDisplay" class="timer">Tempo: 60s</div>
 
         </header>
 
+        <!-- <section> é uma secção da página. Aqui agrupamos a parte visual (a "arena" com os baldes) -->
         <section class="arena">
 
+            <!-- Uma <div> que serve de caixa invisível para segurar o balde de 5L e o texto por baixo dele -->
             <div class="balde-wrapper">
 
+                <!-- A <div> que representa o balde maior em si. Tem o "id=balde5" -->
                 <div class="balde" id="balde5">
 
+                    <!-- A <div> que representa a água. O estilo "height: 0%" garante que a água começa vazia (0%) antes do JavaScript entrar em ação -->
                     <div class="agua" id="agua5" style="height: 0%;"></div>
 
                 </div>
 
+                <!-- Uma <div> para o rótulo/etiqueta do balde -->
                 <div class="label">
 
+                    <!-- O <span> é usado para embrulhar uma pequena parte do texto. Assim o JavaScript altera apenas o número 0 para os litros atuais -->
                     Balde 5L (<span id="textoB5">0</span>L)
 
                 </div>
 
             </div>
 
+            <!-- A mesma estrutura repete-se para o balde de 3L -->
             <div class="balde-wrapper">
 
+                <!-- Tem a classe extra "balde-pequeno" para que o CSS o desenhe mais pequeno que o outro -->
                 <div class="balde balde-pequeno" id="balde3">
 
                     <div class="agua" id="agua3" style="height: 0%;"></div>
@@ -64,34 +85,42 @@
 
         </section>
 
+        <!-- Outra secção, desta vez para o painel de controlo, onde ficam os botões do jogador -->
         <section class="painel-controlo">
 
+            <!-- A tag <button> cria botões clicáveis. Cada um tem um "id" para o JavaScript saber exatamente qual foi clicado -->
             <button id="btnEncher5" class="btn">1 - Encher 5L</button>
 
             <button id="btnEncher3" class="btn">2 - Encher 3L</button>
 
+            <!-- Classes "btn-perigo" para pintar o botão de vermelho no CSS -->
             <button id="btnEsvaziar5" class="btn btn-perigo">3 - Esvaziar 5L</button>
 
             <button id="btnEsvaziar3" class="btn btn-perigo">4 - Esvaziar 3L</button>
 
+            <!-- Classes "btn-acao" para destacar visualmente os botões mais complexos -->
             <button id="btnTransf5_3" class="btn btn-acao">5 - Transf. 5L ➔ 3L</button>
 
             <button id="btnTransf3_5" class="btn btn-acao">6 - Transf. 3L ➔ 5L</button>
 
         </section>
 
+        <!-- Esta <div> é o ecrã de Game Over ou Vitória (Modal). O "style=display: none" mantém a caixa invisível/escondida até o JavaScript decidir mostrá-la -->
         <div id="telaFim" class="modal" style="display: none;">
 
+            <!-- <h2> é o Título de nível 2, um pouco mais pequeno que o <h1> -->
             <h2 id="tituloFim">Vitória!</h2>
 
             <p id="textoFim">Você salvou o seu amigo.</p>
 
+            <!-- Botão para reiniciar a partida (recarregar as variáveis no JS) -->
             <button id="btnReiniciar" class="btn">Jogar Novamente</button>
 
         </div>
 
     </main>
 
+    <!-- A tag <script> liga a página HTML ao ficheiro de JavaScript, que é o "cérebro" que dá vida aos botões e ao relógio. Deve ficar no final do <body> para que o HTML carregue primeiro -->
     <script src="../JavaScript/game.js"></script>
 
 </body>
